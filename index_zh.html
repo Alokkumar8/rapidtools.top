@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAPID TOOLS | Navigation</title>
+    <title>RAPID TOOLS | 精选导航</title>
     <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
     <style>
         :root {
@@ -206,178 +206,6 @@
             box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05);
         }
 
-        /* Admin mode styles */
-        .admin-controls {
-            margin: 20px 0;
-            padding: 30px;
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: var(--card-shadow);
-            display: none;
-            border: 1px solid rgba(33, 150, 243, 0.2);
-        }
-
-        .admin-controls.visible {
-            display: block;
-        }
-
-        .admin-form {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .admin-form input,
-        .admin-form select,
-        .admin-form textarea {
-            padding: 12px 15px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            width: 100%;
-            transition: all 0.3s ease;
-        }
-
-        .admin-form input:focus,
-        .admin-form select:focus,
-        .admin-form textarea:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
-            outline: none;
-        }
-
-        .admin-form button {
-            grid-column: span 2;
-            padding: 12px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-
-        .admin-form button:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        }
-
-        .admin-toggle {
-            background: transparent;
-            border: none;
-            color: var(--comment-color);
-            cursor: pointer;
-            font-size: 14px;
-            text-decoration: underline;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .admin-toggle:hover {
-            color: var(--primary-color);
-        }
-
-        /* Password modal styles */
-        .password-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .password-modal.visible {
-            display: flex;
-        }
-
-        .password-container {
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 12px;
-            width: 350px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .password-container h3 {
-            margin-bottom: 20px;
-            color: var(--primary-color);
-        }
-
-        .password-input {
-            width: 100%;
-            padding: 12px 15px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            font-size: 16px;
-        }
-
-        .password-buttons {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .password-buttons button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .password-submit {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .password-cancel {
-            background-color: #f1f1f1;
-            color: #666;
-        }
-
-        .password-buttons button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .sites-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-            
-            header {
-                padding: 20px 0;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .theme-toggle {
-                top: 10px;
-                right: 10px;
-            }
-            
-            .admin-form {
-                grid-template-columns: 1fr;
-            }
-            
-            .admin-form button {
-                grid-column: span 1;
-            }
-        }
-
         /* Tech-inspired elements */
         .tech-circles {
             position: absolute;
@@ -398,6 +226,33 @@
             z-index: -1;
             opacity: 0.1;
         }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .sites-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            header {
+                padding: 20px 0;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .theme-toggle, .language-toggle {
+                top: 10px;
+            }
+            
+            .theme-toggle {
+                right: 10px;
+            }
+            
+            .language-toggle {
+                left: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -417,716 +272,716 @@
             </svg>
             
             <img src="assets/images/logo.jpg" class="logo" alt="RAPID TOOLS">
-            <p>Carefully selected efficient tools navigation</p>
-            <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
-            <button class="language-toggle" onclick="switchLanguage()">中文</button>
+            <p>精心挑选的高效工具导航</p>
+            <button class="theme-toggle" onclick="toggleTheme()">切换主题</button>
+            <button class="language-toggle" onclick="switchLanguage()">English</button>
         </header>
 
         <div class="category">
-            <h2 class="category-title">AI Tools</h2>
+            <h2 class="category-title">AI 工具</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="ai assistant chat conversation">
                     <a href="https://copilot.microsoft.com/" target="_blank">
-                        <h3 class="site-name">Microsoft Copilot</h3>
-                        <p>Advanced AI assistant powered by modern models</p>
-                        <p class="site-comment">Editor's Note: Integrates with Microsoft services, offers both free and premium features</p>
+                        <h3 class="site-name">微软 Copilot</h3>
+                        <p>由先进模型驱动的 AI 助手</p>
+                        <p class="site-comment">站长点评: 集成微软服务，提供免费和高级功能</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="ai chat gpt openai">
                     <a href="https://chatgpt.com/" target="_blank">
                         <h3 class="site-name">ChatGPT</h3>
-                        <p>OpenAI's conversational AI assistant</p>
-                        <p class="site-comment">Review: Versatile AI capable of answering questions and assisting with various tasks</p>
+                        <p>OpenAI 的对话式人工智能助手</p>
+                        <p class="site-comment">站长点评: 多功能 AI，能回答问题并协助各种任务</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="ai image generation midjourney">
                     <a href="https://www.midjourney.com/home" target="_blank">
                         <h3 class="site-name">Midjourney</h3>
-                        <p>AI image generation via text prompts</p>
-                        <p class="site-comment">Review: Creates stunning AI artwork with detailed text descriptions</p>
+                        <p>通过文本提示生成 AI 图像</p>
+                        <p class="site-comment">站长点评: 通过详细文本描述创建令人惊叹的 AI 艺术作品</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="ai model civitai stable diffusion">
                     <a href="https://civitai.com/search/models" target="_blank">
                         <h3 class="site-name">Civitai</h3>
-                        <p>Community platform for AI image models</p>
-                        <p class="site-comment">Review: Extensive collection of Stable Diffusion models created by the community</p>
+                        <p>AI 图像模型的社区平台</p>
+                        <p class="site-comment">站长点评: 社区创建的 Stable Diffusion 模型的广泛集合</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="ai liblib chinese stable diffusion">
                     <a href="https://www.liblib.art/sd" target="_blank">
-                        <h3 class="site-name">LiblibAI</h3>
-                        <p>AI image generation platform for Chinese users</p>
-                        <p class="site-comment">Review: Popular Chinese platform for Stable Diffusion models and generation</p>
+                        <h3 class="site-name">哩布哩布AI</h3>
+                        <p>中文用户的 AI 图像生成平台</p>
+                        <p class="site-comment">站长点评: 流行的中文 Stable Diffusion 模型和生成平台</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="ai prompt engineering midjourney">
                     <a href="https://aitag.top/" target="_blank">
-                        <h3 class="site-name">AI Tag Dictionary</h3>
-                        <p>Dictionary of AI image generation prompts</p>
-                        <p class="site-comment">Review: Comprehensive collection of effective prompts for various AI tools</p>
+                        <h3 class="site-name">魔咒百科词典</h3>
+                        <p>AI 图像生成提示词字典</p>
+                        <p class="site-comment">站长点评: 各种 AI 工具的有效提示词的综合集合</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="ai deepseek chat assistant">
                     <a href="https://chat.deepseek.com/" target="_blank">
                         <h3 class="site-name">DeepSeek</h3>
-                        <p>Advanced AI assistant with coding capabilities</p>
-                        <p class="site-comment">Review: Strong in technical domains, especially coding and software development</p>
+                        <p>具有编程能力的高级 AI 助手</p>
+                        <p class="site-comment">站长点评: 在技术领域特别是编码和软件开发方面表现出色</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="ai chatglm video generation">
                     <a href="https://chatglm.cn/video" target="_blank">
-                        <h3 class="site-name">ChatGLM</h3>
-                        <p>AI assistant with video generation capabilities</p>
-                        <p class="site-comment">Review: Popular Chinese AI platform with expanding multimodal abilities</p>
+                        <h3 class="site-name">智谱清言</h3>
+                        <p>具有视频生成能力的 AI 助手</p>
+                        <p class="site-comment">站长点评: 流行的中文 AI 平台，多模态能力不断扩展</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="ai klingai video from image">
                     <a href="https://klingai.com/image-to-video/" target="_blank">
                         <h3 class="site-name">KLING AI</h3>
-                        <p>Transform images into animated videos</p>
-                        <p class="site-comment">Review: Turns still images into short motion videos with multiple options</p>
+                        <p>将图像转换为动画视频</p>
+                        <p class="site-comment">站长点评: 将静态图像转换为多种选项的短动态视频</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="ai suno music generation">
                     <a href="https://suno.com/home" target="_blank">
                         <h3 class="site-name">Suno</h3>
-                        <p>AI-powered music creation platform</p>
-                        <p class="site-comment">Review: Creates high-quality songs from text descriptions with vocals</p>
+                        <p>AI 驱动的音乐创作平台</p>
+                        <p class="site-comment">站长点评: 根据文本描述创建包含人声的高质量歌曲</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="ai voice luvvoice tts">
                     <a href="https://luvvoice.com/" target="_blank">
                         <h3 class="site-name">Luvvoice</h3>
-                        <p>Free text-to-speech tool without word limits</p>
-                        <p class="site-comment">Review: Convert large texts to natural speech with multiple voice options</p>
+                        <p>免费文本转语音工具，无字数限制</p>
+                        <p class="site-comment">站长点评: 将大量文本转换为自然语音，提供多种语音选项</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="ai cursor directory tools">
                     <a href="https://cursor.directory/" target="_blank">
-                        <h3 class="site-name">Cursor Directory</h3>
-                        <p>Comprehensive collection of AI tools</p>
-                        <p class="site-comment">Review: Curated directory of useful AI tools across different categories</p>
+                        <h3 class="site-name">游标目录</h3>
+                        <p>AI 工具综合集合</p>
+                        <p class="site-comment">站长点评: 精心筛选的不同类别的实用 AI 工具目录</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="ai bolt new project">
                     <a href="https://bolt.new/" target="_blank">
                         <h3 class="site-name">bolt.new</h3>
-                        <p>Create new AI projects quickly</p>
-                        <p class="site-comment">Review: Rapid project bootstrapping with AI assistance</p>
+                        <p>快速创建新的 AI 项目</p>
+                        <p class="site-comment">站长点评: 借助 AI 辅助快速引导项目</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="ai v0 vercel ui generation">
                     <a href="https://v0.dev/" target="_blank">
                         <h3 class="site-name">v0 by Vercel</h3>
-                        <p>AI-powered UI component generation</p>
-                        <p class="site-comment">Review: Generate React components and UI designs from text descriptions</p>
+                        <p>AI 驱动的 UI 组件生成</p>
+                        <p class="site-comment">站长点评: 根据文本描述生成 React 组件和 UI 设计</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="ai oasis model llm">
                     <a href="https://oasis-model.github.io/" target="_blank">
-                        <h3 class="site-name">Oasis</h3>
-                        <p>Open-source AI language model</p>
-                        <p class="site-comment">Review: High-performing open language model with research focus</p>
+                        <h3 class="site-name">绿洲 (Oasis)</h3>
+                        <p>开源 AI 语言模型</p>
+                        <p class="site-comment">站长点评: 高性能开源语言模型，研究导向</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="ai agi roadmap research">
                     <a href="https://waytoagi.feishu.cn/wiki/QPe5w5g7UisbEkkow8XcDmOpn8e" target="_blank">
-                        <h3 class="site-name">Road to AGI</h3>
-                        <p>Research and learning resources about AGI</p>
-                        <p class="site-comment">Review: Curated collection of materials on advancing AI capabilities</p>
+                        <h3 class="site-name">通往 AGI 之路</h3>
+                        <p>关于 AGI 的研究和学习资源</p>
+                        <p class="site-comment">站长点评: 精选的关于推进 AI 能力的资料集合</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="ai jianying video content generation">
                     <a href="https://jimeng.jianying.com/ai-tool/video/generate" target="_blank">
-                        <h3 class="site-name">Jianying AI</h3>
-                        <p>AI-powered video creation platform</p>
-                        <p class="site-comment">Review: Comprehensive toolkit for AI video generation and editing</p>
+                        <h3 class="site-name">即梦 AI</h3>
+                        <p>AI 驱动的视频创作平台</p>
+                        <p class="site-comment">站长点评: AI 视频生成和编辑的综合工具包</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="ai text to speech tts voice">
                     <a href="http://new.text-to-speech.cn/" target="_blank">
-                        <h3 class="site-name">Online Text-to-Speech</h3>
-                        <p>Free text-to-speech conversion tool</p>
-                        <p class="site-comment">Editor's Note: Supports multiple languages and voice styles with no character limit</p>
+                        <h3 class="site-name">在线文字转语音</h3>
+                        <p>免费的文本转语音工具</p>
+                        <p class="site-comment">站长点评: 支持多种语言和语音风格，无字数限制</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="ai text voice dubbing">
                     <a href="https://peiyin.remeins.com/" target="_blank">
-                        <h3 class="site-name">Jiling Dubbing</h3>
-                        <p>Online text-to-speech dubbing tool</p>
-                        <p class="site-comment">Editor's Note: Professional text-to-speech service for various dubbing needs</p>
+                        <h3 class="site-name">记灵配音</h3>
+                        <p>在线文字转语音配音工具</p>
+                        <p class="site-comment">站长点评: 专业的文字转语音服务，适合多种配音需求</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="ai video watermark remove">
                     <a href="https://kaze.ai/" target="_blank">
                         <h3 class="site-name">Kaze.ai</h3>
-                        <p>Free online watermark and logo removal tool</p>
-                        <p class="site-comment">Editor's Note: AI-powered watermark removal with excellent results</p>
+                        <p>免费在线去除水印和徽标工具</p>
+                        <p class="site-comment">站长点评: 人工智能驱动的水印去除，效果出色</p>
                     </a>
                 </div>
             </div>
         </div>
 
         <div class="category">
-            <h2 class="category-title">YouTube Tools</h2>
+            <h2 class="category-title">YouTube 工具</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="youtube download video mp4">
                     <a href="https://yt.savetube.me/1kejjj1?id=362858504" target="_blank">
                         <h3 class="site-name">SaveTube</h3>
-                        <p>Easily download YouTube videos online</p>
-                        <p class="site-comment">Review: Simple and fast to use, supports multiple resolutions, no software installation required</p>
+                        <p>轻松下载 YouTube 视频的在线工具</p>
+                        <p class="site-comment">站长点评: 操作简单快捷，支持多种分辨率下载，无需安装任何软件</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="youtube subtitle download srt">
                     <a href="https://www.downloadyoutubesubtitles.com/" target="_blank">
                         <h3 class="site-name">Download YouTube Subtitles</h3>
-                        <p>Download subtitles from YouTube videos</p>
-                        <p class="site-comment">Review: Clean interface, supports multiple subtitle formats, perfect for language learners</p>
+                        <p>下载 YouTube 视频字幕</p>
+                        <p class="site-comment">站长点评: 界面简洁，支持多种字幕格式，非常适合学习外语的用户</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="youtube subtitle download caption">
                     <a href="https://downsub.com/" target="_blank">
                         <h3 class="site-name">DownSub</h3>
-                        <p>Download subtitles from YouTube and other platforms</p>
-                        <p class="site-comment">Review: Not just for YouTube, supports multiple video platforms with comprehensive functions</p>
+                        <p>下载 YouTube 和其他平台的字幕</p>
+                        <p class="site-comment">站长点评: 不仅支持 YouTube，还支持多种视频平台，功能全面</p>
                     </a>
                 </div>
             </div>
         </div>
 
         <div class="category">
-            <h2 class="category-title">Video Tools</h2>
+            <h2 class="category-title">视频工具</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="video download mp4">
                     <a href="https://www.videograbber.net/" target="_blank">
                         <h3 class="site-name">VideoGrabber</h3>
-                        <p>Download videos from various platforms</p>
-                        <p class="site-comment">Review: Supports multiple video platforms, high-quality downloads, no registration required</p>
+                        <p>从多个平台下载视频</p>
+                        <p class="site-comment">站长点评: 支持多个视频平台，高质量下载，无需注册</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="video compress reduce size">
                     <a href="https://www.youcompress.com/" target="_blank">
                         <h3 class="site-name">YouCompress</h3>
-                        <p>Compress video files online</p>
-                        <p class="site-comment">Review: Effective compression while maintaining quality, easy to use</p>
+                        <p>在线压缩视频文件</p>
+                        <p class="site-comment">站长点评: 压缩效果好，保持视频质量，使用简单</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="video edit trim cut">
                     <a href="https://www.kapwing.com/studio/editor" target="_blank">
                         <h3 class="site-name">Kapwing</h3>
-                        <p>Online video editor</p>
-                        <p class="site-comment">Review: Professional video editing features, easy to use interface</p>
+                        <p>在线视频编辑器</p>
+                        <p class="site-comment">站长点评: 专业的视频编辑功能，界面友好</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="video screen record">
                     <a href="https://www.screencast-o-matic.com/" target="_blank">
                         <h3 class="site-name">Screencast-O-Matic</h3>
-                        <p>Screen recording and video creation</p>
-                        <p class="site-comment">Review: Excellent for creating tutorials and screen recordings</p>
+                        <p>屏幕录制和视频制作</p>
+                        <p class="site-comment">站长点评: 非常适合制作教程和屏幕录制</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="video download converter">
                     <a href="https://www.maotools.org/download" target="_blank">
-                        <h3 class="site-name">Mao Tools</h3>
-                        <p>All-in-one video downloader</p>
-                        <p class="site-comment">Editor's Note: Works with various platforms, supports multiple formats</p>
+                        <h3 class="site-name">猫抓工具箱</h3>
+                        <p>全能视频下载器</p>
+                        <p class="site-comment">站长点评: 适用于各种平台的视频下载，支持多种格式</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="video extract clip movie">
                     <a href="https://www.33.agilestudio.cn/" target="_blank">
-                        <h3 class="site-name">33 Lines</h3>
-                        <p>Find movie clips by dialogue</p>
-                        <p class="site-comment">Editor's Note: Quickly locate film segments, perfect for content creators</p>
+                        <h3 class="site-name">33台词</h3>
+                        <p>通过台词找影片素材</p>
+                        <p class="site-comment">站长点评: 快速定位影视片段，适合影视创作者</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="video clip search quote">
                     <a href="https://getyarn.io/" target="_blank">
                         <h3 class="site-name">YARN</h3>
-                        <p>Search video clips by quotes</p>
-                        <p class="site-comment">Editor's Note: Vast library of English movie clips, searchable by dialogue</p>
+                        <p>按引用搜索影视片段</p>
+                        <p class="site-comment">站长点评: 海量英文影视片段，按台词定位</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="video clip search movie">
                     <a href="http://www.zhaotaici.cn/" target="_blank">
-                        <h3 class="site-name">FindDialogue</h3>
-                        <p>Movie dialogue search engine</p>
-                        <p class="site-comment">Editor's Note: Convenient for finding Chinese movie quotes and related clips</p>
+                        <h3 class="site-name">找台词</h3>
+                        <p>影视台词搜索引擎</p>
+                        <p class="site-comment">站长点评: 方便查找中文影视台词及相关片段</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="video watermark remove">
                     <a href="https://www.vidmore.com/watermark-remover/" target="_blank">
-                        <h3 class="site-name">Online Watermark Remover</h3>
-                        <p>Remove watermarks and logos from images</p>
-                        <p class="site-comment">Editor's Note: Simple to use watermark removal tool with no software installation required</p>
+                        <h3 class="site-name">在线水印去除器</h3>
+                        <p>从图像中删除水印和徽标</p>
+                        <p class="site-comment">站长点评: 简单易用的水印去除工具，无需安装软件</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="video from image animation">
                     <a href="https://www.unscreen.com/" target="_blank">
                         <h3 class="site-name">Unscreen</h3>
-                        <p>Video background removal tool</p>
-                        <p class="site-comment">Editor's Note: Automatically removes video backgrounds for transparent videos</p>
+                        <p>视频背景移除工具</p>
+                        <p class="site-comment">站长点评: 自动去除视频背景，适合创建透明视频</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="video url extract download">
                     <a href="https://tiqu.cc/" target="_blank">
-                        <h3 class="site-name">Video Extractor</h3>
-                        <p>Multi-platform video extraction download tool</p>
-                        <p class="site-comment">Editor's Note: Supports TikTok, Twitter, and other platforms for video extraction</p>
+                        <h3 class="site-name">视频提取</h3>
+                        <p>多平台视频提取下载工具</p>
+                        <p class="site-comment">站长点评: 支持抖音、Twitter等多平台视频提取</p>
                     </a>
                 </div>
             </div>
         </div>
 
         <div class="category">
-            <h2 class="category-title">Image Tools</h2>
+            <h2 class="category-title">图片工具</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="image compress reduce size">
                     <a href="https://www.tinypng.com/" target="_blank">
                         <h3 class="site-name">TinyPNG</h3>
-                        <p>Compress PNG and JPEG images</p>
-                        <p class="site-comment">Review: Excellent compression ratio, maintains image quality</p>
+                        <p>压缩 PNG 和 JPEG 图片</p>
+                        <p class="site-comment">站长点评: 压缩率高，保持图片质量</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="image edit crop resize">
                     <a href="https://www.iloveimg.com/" target="_blank">
                         <h3 class="site-name">iLoveIMG</h3>
-                        <p>Edit, crop, and resize images</p>
-                        <p class="site-comment">Review: Comprehensive image editing tools, batch processing available</p>
+                        <p>编辑、裁剪和调整图片大小</p>
+                        <p class="site-comment">站长点评: 功能全面的图片编辑工具，支持批量处理</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="image background remove">
                     <a href="https://www.remove.bg/" target="_blank">
                         <h3 class="site-name">Remove.bg</h3>
-                        <p>Remove image backgrounds automatically</p>
-                        <p class="site-comment">Review: AI-powered background removal, very accurate results</p>
+                        <p>自动移除图片背景</p>
+                        <p class="site-comment">站长点评: AI 驱动的背景移除，效果非常准确</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="image create design">
                     <a href="https://www.canva.com/" target="_blank">
                         <h3 class="site-name">Canva</h3>
-                        <p>Create beautiful designs and graphics</p>
-                        <p class="site-comment">Review: Professional design templates, easy to use interface</p>
+                        <p>创建精美的设计和图形</p>
+                        <p class="site-comment">站长点评: 专业的设计模板，界面易用</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="image photo edit photoshop">
                     <a href="https://www.photopea.com/" target="_blank">
                         <h3 class="site-name">Photopea</h3>
-                        <p>Free online photo editor</p>
-                        <p class="site-comment">Editor's Note: Similar to Photoshop but online, with powerful features</p>
+                        <p>免费在线图片编辑器</p>
+                        <p class="site-comment">站长点评: 类似Photoshop的在线版，功能强大</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="image background remove transparent">
                     <a href="https://bgsub.cn/webapp/" target="_blank">
                         <h3 class="site-name">BgSub</h3>
-                        <p>Background replacement tool without uploading</p>
-                        <p class="site-comment">Editor's Note: Processes images locally, secure and efficient</p>
+                        <p>无需上传的背景替换工具</p>
+                        <p class="site-comment">站长点评: 本地处理图片，安全且高效</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="image background remove ai">
                     <a href="https://pixian.ai/" target="_blank">
                         <h3 class="site-name">Pixian.AI</h3>
-                        <p>AI background removal for images</p>
-                        <p class="site-comment">Editor's Note: Free high-quality background removal tool, no registration required</p>
+                        <p>AI图片背景去除</p>
+                        <p class="site-comment">站长点评: 免费高清的背景移除工具，无需注册</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="image compress optimize">
                     <a href="https://ai.danqingai.com/index/image/compressor.html" target="_blank">
-                        <h3 class="site-name">Danqing AI Image Compressor</h3>
-                        <p>Online image compression tool</p>
-                        <p class="site-comment">Editor's Note: Smart compression that maintains quality while reducing file size</p>
+                        <h3 class="site-name">丹青AI图片压缩</h3>
+                        <p>在线图片压缩工具</p>
+                        <p class="site-comment">站长点评: 智能压缩，保持画质的同时减小文件体积</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="image ocr text extract">
                     <a href="https://ocr.wdku.net/" target="_blank">
-                        <h3 class="site-name">Online OCR</h3>
-                        <p>Image to text OCR tool</p>
-                        <p class="site-comment">Editor's Note: Free and fast text extraction service from images</p>
+                        <h3 class="site-name">在线文字识别</h3>
+                        <p>图片转文字OCR工具</p>
+                        <p class="site-comment">站长点评: 免费快速的图片文字提取服务</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="image tilt shift photography">
                     <a href="https://tiltshiftmaker.com/photo-editing.php" target="_blank">
                         <h3 class="site-name">TiltShiftMaker</h3>
-                        <p>Create tilt-shift photography effects</p>
-                        <p class="site-comment">Editor's Note: Easily create miniature model effect photos</p>
+                        <p>创建移轴摄影效果</p>
+                        <p class="site-comment">站长点评: 轻松创建微缩模型效果的照片</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="image favicon extract logo">
-                    <a href="https://www.faviconextractor.com/" target="_blank">
-                        <h3 class="site-name">Favicon Extractor</h3>
-                        <p>Download favicons from websites</p>
-                        <p class="site-comment">Editor's Note: Quickly get icons and logos from any website</p>
+                    <a href="https://www.faviconextractor.com/zh" target="_blank">
+                        <h3 class="site-name">图标提取器</h3>
+                        <p>从网站下载Favicon</p>
+                        <p class="site-comment">站长点评: 快速获取任意网站的图标和Logo</p>
                     </a>
                 </div>
             </div>
         </div>
 
         <div class="category">
-            <h2 class="category-title">PDF Tools</h2>
+            <h2 class="category-title">PDF 工具</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="pdf merge combine">
                     <a href="https://www.ilovepdf.com/merge_pdf" target="_blank">
                         <h3 class="site-name">iLovePDF</h3>
-                        <p>Merge, split, and edit PDF files</p>
-                        <p class="site-comment">Review: User-friendly interface, comprehensive PDF tools</p>
+                        <p>合并、分割和编辑 PDF 文件</p>
+                        <p class="site-comment">站长点评: 界面友好，PDF 工具全面</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="pdf convert word">
                     <a href="https://www.sodapdf.com/pdf-to-word/" target="_blank">
                         <h3 class="site-name">SodaPDF</h3>
-                        <p>Convert PDF to Word and other formats</p>
-                        <p class="site-comment">Review: Accurate conversion, maintains formatting</p>
+                        <p>将 PDF 转换为 Word 和其他格式</p>
+                        <p class="site-comment">站长点评: 转换准确，保持格式</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="pdf compress reduce size">
                     <a href="https://www.smallpdf.com/compress-pdf" target="_blank">
                         <h3 class="site-name">SmallPDF</h3>
-                        <p>Compress PDF files online</p>
-                        <p class="site-comment">Review: Fast compression, good quality retention</p>
+                        <p>在线压缩 PDF 文件</p>
+                        <p class="site-comment">站长点评: 压缩快速，质量保持好</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="pdf sign document">
                     <a href="https://www.digisigner.com/" target="_blank">
                         <h3 class="site-name">DigiSigner</h3>
-                        <p>Sign PDF documents electronically</p>
-                        <p class="site-comment">Review: Secure digital signatures, legally binding</p>
+                        <p>电子签名 PDF 文档</p>
+                        <p class="site-comment">站长点评: 安全的数字签名，具有法律效力</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="pdf ocr text extract">
-                    <a href="https://smallpdf.com/ocr" target="_blank">
+                    <a href="https://smallpdf.com/cn/pdf-ocr" target="_blank">
                         <h3 class="site-name">SmallPDF OCR</h3>
-                        <p>PDF document recognition tool</p>
-                        <p class="site-comment">Editor's Note: Professional tool for extracting text from scanned PDFs</p>
+                        <p>PDF文档识别工具</p>
+                        <p class="site-comment">站长点评: 从扫描PDF中提取文本的专业工具</p>
                     </a>
                 </div>
             </div>
         </div>
 
         <div class="category">
-            <h2 class="category-title">Audio Tools</h2>
+            <h2 class="category-title">音频工具</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="audio convert format">
                     <a href="https://online-audio-converter.com/" target="_blank">
                         <h3 class="site-name">Online Audio Converter</h3>
-                        <p>Convert audio files between formats</p>
-                        <p class="site-comment">Review: Supports multiple formats, high-quality conversion</p>
+                        <p>转换音频文件格式</p>
+                        <p class="site-comment">站长点评: 支持多种格式，转换质量高</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="audio compress reduce size">
                     <a href="https://www.mp3smaller.com/" target="_blank">
                         <h3 class="site-name">MP3Smaller</h3>
-                        <p>Compress MP3 files online</p>
-                        <p class="site-comment">Review: Simple interface, effective compression</p>
+                        <p>在线压缩 MP3 文件</p>
+                        <p class="site-comment">站长点评: 界面简单，压缩效果好</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="audio edit trim cut">
                     <a href="https://www.audacityteam.org/" target="_blank">
                         <h3 class="site-name">Audacity</h3>
-                        <p>Professional audio editing software</p>
-                        <p class="site-comment">Review: Powerful features, free and open-source</p>
+                        <p>专业的音频编辑软件</p>
+                        <p class="site-comment">站长点评: 功能强大，免费开源</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="audio create music">
                     <a href="https://www.soundtrap.com/" target="_blank">
                         <h3 class="site-name">Soundtrap</h3>
-                        <p>Create and record music online</p>
-                        <p class="site-comment">Review: Collaborative music creation, professional features</p>
+                        <p>在线创作和录制音乐</p>
+                        <p class="site-comment">站长点评: 支持协作创作，专业功能</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="audio music composition">
                     <a href="https://www.autopiano.cn/" target="_blank">
-                        <h3 class="site-name">Free Piano</h3>
-                        <p>Online piano playing tool</p>
-                        <p class="site-comment">Editor's Note: Multiple instrument choices, ready-to-use online piano</p>
+                        <h3 class="site-name">自由钢琴</h3>
+                        <p>在线钢琴演奏工具</p>
+                        <p class="site-comment">站长点评: 多种乐器选择，即开即用的在线钢琴</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="audio music composition">
                     <a href="https://tuneform.com/" target="_blank">
                         <h3 class="site-name">Tuneform</h3>
-                        <p>Music creation platform</p>
-                        <p class="site-comment">Editor's Note: Online tool to make your music sound better</p>
+                        <p>音乐创作平台</p>
+                        <p class="site-comment">站长点评: 让你的音乐更加出色的在线工具</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="audio music notation transcription">
                     <a href="https://htsfwb.samr.gov.cn/" target="_blank">
-                        <h3 class="site-name">Music Transcription Tool</h3>
-                        <p>Online frequency analysis for music transcription</p>
-                        <p class="site-comment">Editor's Note: Blessing for music lovers, analyze and transcribe music online</p>
+                        <h3 class="site-name">扒谱工具</h3>
+                        <p>在线前端频率分析扒谱</p>
+                        <p class="site-comment">站长点评: 音乐爱好者的福音，在线分析和转录音乐</p>
                     </a>
                 </div>
             </div>
         </div>
 
         <div class="category">
-            <h2 class="category-title">Development Tools</h2>
+            <h2 class="category-title">开发工具</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="code editor online">
                     <a href="https://replit.com/" target="_blank">
                         <h3 class="site-name">Replit</h3>
-                        <p>Online code editor and IDE</p>
-                        <p class="site-comment">Review: Supports multiple languages, collaborative coding</p>
+                        <p>在线代码编辑器和 IDE</p>
+                        <p class="site-comment">站长点评: 支持多种语言，支持协作编程</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="code format beautify">
                     <a href="https://beautifier.io/" target="_blank">
                         <h3 class="site-name">Beautifier</h3>
-                        <p>Code formatter and beautifier</p>
-                        <p class="site-comment">Review: Supports multiple languages, customizable formatting</p>
+                        <p>代码格式化和美化工具</p>
+                        <p class="site-comment">站长点评: 支持多种语言，可自定义格式化</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="api test postman">
                     <a href="https://www.postman.com/" target="_blank">
                         <h3 class="site-name">Postman</h3>
-                        <p>API testing and development</p>
-                        <p class="site-comment">Review: Comprehensive API testing tools, team collaboration</p>
+                        <p>API 测试和开发工具</p>
+                        <p class="site-comment">站长点评: 全面的 API 测试工具，支持团队协作</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="git repository">
                     <a href="https://github.com/" target="_blank">
                         <h3 class="site-name">GitHub</h3>
-                        <p>Code hosting and collaboration</p>
-                        <p class="site-comment">Review: Industry standard, extensive features</p>
+                        <p>代码托管和协作平台</p>
+                        <p class="site-comment">站长点评: 行业标准，功能丰富</p>
                     </a>
                 </div>
             </div>
         </div>
 
         <div class="category">
-            <h2 class="category-title">Design & Creative Tools</h2>
+            <h2 class="category-title">设计创作工具</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="design gaoding creative">
                     <a href="https://www.gaoding.com/" target="_blank">
-                        <h3 class="site-name">Gaoding Design</h3>
-                        <p>Online design platform</p>
-                        <p class="site-comment">Editor's Note: One-stop solution for poster design, image design, and video editing</p>
+                        <h3 class="site-name">稿定设计</h3>
+                        <p>在线设计平台</p>
+                        <p class="site-comment">站长点评: 海报设计、图片设计、视频编辑一站式解决</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="design emoji expression">
                     <a href="https://benisland.neocities.org/petpet/" target="_blank">
                         <h3 class="site-name">PetPet</h3>
-                        <p>Dynamic expression generator</p>
-                        <p class="site-comment">Editor's Note: Create fun head-patting animations, supports custom uploads</p>
+                        <p>动态表情生成器</p>
+                        <p class="site-comment">站长点评: 创建有趣的摸头动图，支持自定义上传</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="design emoji finder ai">
                     <a href="https://emojis.click/en" target="_blank">
                         <h3 class="site-name">EmojiClick</h3>
-                        <p>AI-assisted emoji finder</p>
-                        <p class="site-comment">Editor's Note: Find the perfect emoji with AI</p>
+                        <p>AI辅助表情符号查找器</p>
+                        <p class="site-comment">站长点评: 用AI找到完美的表情符号</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="design ogimage generate">
                     <a href="https://ogimage.click/" target="_blank">
-                        <h3 class="site-name">OG Image Generator</h3>
-                        <p>Free social sharing image generation</p>
-                        <p class="site-comment">Editor's Note: Quickly create professional website preview images</p>
+                        <h3 class="site-name">OG图像生成器</h3>
+                        <p>免费的社交分享图片生成</p>
+                        <p class="site-comment">站长点评: 快速创建专业的网站预览图</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="design flowchart diagram">
                     <a href="https://play.d2lang.com/" target="_blank">
-                        <h3 class="site-name">D2 Flowchart</h3>
-                        <p>Quick flowchart editing tool</p>
-                        <p class="site-comment">Editor's Note: Clean and efficient chart drawing tool</p>
+                        <h3 class="site-name">D2流程图</h3>
+                        <p>快速编辑流程图工具</p>
+                        <p class="site-comment">站长点评: 简洁高效的图表绘制工具</p>
                     </a>
                 </div>
             </div>
         </div>
 
         <div class="category">
-            <h2 class="category-title">Utility Tools</h2>
+            <h2 class="category-title">实用工具</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="utility countdown timer">
                     <a href="https://e.ggtimer.com/" target="_blank">
                         <h3 class="site-name">e.ggtimer</h3>
-                        <p>Simple countdown timer</p>
-                        <p class="site-comment">Editor's Note: Minimalist design online countdown tool</p>
+                        <p>简单的倒数计时器</p>
+                        <p class="site-comment">站长点评: 极简设计的在线倒计时工具</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="utility ip check information">
                     <a href="https://ipjiance.com/" target="_blank">
-                        <h3 class="site-name">IP Check</h3>
-                        <p>Check your IP quality</p>
-                        <p class="site-comment">Editor's Note: Comprehensive IP information analysis and security check</p>
+                        <h3 class="site-name">IP检测</h3>
+                        <p>检测您的IP质量</p>
+                        <p class="site-comment">站长点评: 全面的IP信息分析与安全检测</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="utility ip info leak check">
-                    <a href="https://whoer.net/" target="_blank">
+                    <a href="https://whoer.net/zh" target="_blank">
                         <h3 class="site-name">Whoer</h3>
-                        <p>IP and anonymity detection tool</p>
-                        <p class="site-comment">Editor's Note: Check your IP address, DNS, and anonymity level</p>
+                        <p>IP和匿名性检测工具</p>
+                        <p class="site-comment">站长点评: 检查您的IP地址、DNS和匿名性级别</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="utility file rename batch">
                     <a href="https://webrename.cn/" target="_blank">
                         <h3 class="site-name">WebRename</h3>
-                        <p>Online batch file renaming tool</p>
-                        <p class="site-comment">Editor's Note: Efficient multi-file renaming solution</p>
+                        <p>在线文件批量重命名工具</p>
+                        <p class="site-comment">站长点评: 高效的多文件重命名解决方案</p>
                     </a>
                 </div>
                 
                 <div class="site-card" data-keywords="utility calculator online">
                     <a href="https://calculator-online.net/" target="_blank">
-                        <h3 class="site-name">Online Calculator</h3>
-                        <p>Free reliable calculation tool</p>
-                        <p class="site-comment">Editor's Note: Comprehensive platform with various practical calculation functions</p>
+                        <h3 class="site-name">在线计算器</h3>
+                        <p>免费可靠的计算工具</p>
+                        <p class="site-comment">站长点评: 各种实用计算功能的综合平台</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="utility diagram math calculator">
-                    <a href="https://planetcalc.com/" target="_blank">
-                        <h3 class="site-name">Planet Calculator</h3>
-                        <p>Geometric and mathematical online calculation tools</p>
-                        <p class="site-comment">Editor's Note: Rich professional calculation tools supporting various complex calculations</p>
+                    <a href="https://zh.planetcalc.com/" target="_blank">
+                        <h3 class="site-name">在线计算器</h3>
+                        <p>几何、数学在线计算工具</p>
+                        <p class="site-comment">站长点评: 丰富的专业计算工具，支持各种复杂计算</p>
                     </a>
                 </div>
             </div>
         </div>
 
         <div class="category">
-            <h2 class="category-title">Document & Editing Tools</h2>
+            <h2 class="category-title">文档与编辑工具</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="document note mind mapping">
                     <a href="https://mind.shutu.cn/" target="_blank">
                         <h3 class="site-name">TreeMind</h3>
-                        <p>Tree diagram mind mapping</p>
-                        <p class="site-comment">Editor's Note: Efficient and easy-to-use mind map editor</p>
+                        <p>树图思维导图</p>
+                        <p class="site-comment">站长点评: 高效易用的思维导图编辑器</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="document note outline">
                     <a href="https://mubu.com/home" target="_blank">
-                        <h3 class="site-name">Mubu</h3>
-                        <p>Minimalist outline notes</p>
-                        <p class="site-comment">Editor's Note: Generate mind maps with one click, clearly organize ideas</p>
+                        <h3 class="site-name">幕布</h3>
+                        <p>极简大纲笔记</p>
+                        <p class="site-comment">站长点评: 一键生成思维导图，清晰组织思路</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="document write assist">
-                    <a href="https://smodin.io/" target="_blank">
+                    <a href="https://smodin.io/zh-cn" target="_blank">
                         <h3 class="site-name">Smodin</h3>
-                        <p>Multilingual writing assistance</p>
-                        <p class="site-comment">Editor's Note: Smart writing assistant, polish and improve your text</p>
+                        <p>多语言写作辅助</p>
+                        <p class="site-comment">站长点评: 智能写作助手，润色和改进您的文本</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="document dictation speech">
                     <a href="https://speechnotes.co/dictate/" target="_blank">
                         <h3 class="site-name">Speech Notes</h3>
-                        <p>Voice-to-text online notepad</p>
-                        <p class="site-comment">Editor's Note: Convenient dictation tool, supports long recording sessions</p>
+                        <p>语音转文本在线记事本</p>
+                        <p class="site-comment">站长点评: 方便的听写工具，支持长时间录音</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="document ebook reader">
                     <a href="https://web.koodoreader.com/" target="_blank">
                         <h3 class="site-name">Koodo Reader</h3>
-                        <p>Cross-platform e-book reader</p>
-                        <p class="site-comment">Editor's Note: Online e-book reader supporting multiple formats</p>
+                        <p>跨平台电子书阅读器</p>
+                        <p class="site-comment">站长点评: 支持多种格式的在线电子书阅读器</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="document chinese calligraphy">
                     <a href="https://zitie.xueyuqu.com/" target="_blank">
-                        <h3 class="site-name">Xueyuqu Calligraphy</h3>
-                        <p>Free online grid paper generator for calligraphy</p>
-                        <p class="site-comment">Editor's Note: Customized generation of various font practice templates</p>
+                        <h3 class="site-name">学于趣字帖</h3>
+                        <p>免费在线田字格字帖生成器</p>
+                        <p class="site-comment">站长点评: 定制化生成各种字体的练字模板</p>
                     </a>
                 </div>
             </div>
         </div>
 
         <footer>
-            <p>© 2023 RAPID TOOLS | Carefully Selected Productivity Tool Navigation</p>
-            <p>This site is built with a single HTML file, easy to deploy and share</p>
-            <p><a href="link_checker.html" style="color: var(--primary-color);">Link Checker Tool</a></p>
+            <p>© 2023 RAPID TOOLS | 精心挑选的高效工具导航</p>
+            <p>本站使用单 HTML 文件构建，易于部署和分享</p>
+            <p><a href="link_checker.html" style="color: var(--primary-color);">链接检测工具</a></p>
         </footer>
     </div>
 
     <script>
-        // Language switching function
+        // 语言切换功能
         function switchLanguage() {
-            window.location.href = 'index_zh.html';
+            window.location.href = 'index.html';
         }
         
-        // Theme toggle function
+        // 切换主题功能
         function toggleTheme() {
             document.body.dataset.theme = document.body.dataset.theme === 'dark' ? '' : 'dark';
             localStorage.setItem('theme', document.body.dataset.theme || 'light');
         }
 
-        // Load saved theme
+        // 加载保存的主题
         document.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme') || 'light';
             if (savedTheme === 'dark') {
                 document.body.dataset.theme = 'dark';
             }
 
-            // Load websites from storage
+            // 从本地存储加载网站数据
             loadSitesFromStorage();
         });
 
-        // Load sites from storage
+        // 从本地存储加载网站数据
         function loadSitesFromStorage() {
             const savedData = localStorage.getItem('navigationSites');
             if (!savedData) return;
@@ -1134,26 +989,26 @@
             try {
                 const data = JSON.parse(savedData);
                 
-                // Clear default categories and sites
+                // 清除默认的分类和网站
                 const defaultCategories = document.querySelectorAll('.category');
                 defaultCategories.forEach(category => {
                     category.remove();
                 });
 
-                // Add saved categories and sites
+                // 添加已保存的分类和网站
                 data.forEach(categoryData => {
                     const categoryDiv = document.createElement('div');
                     categoryDiv.className = 'category';
                     categoryDiv.innerHTML = `
-                        <h2 class="category-title">${categoryData.category_en || categoryData.category}</h2>
+                        <h2 class="category-title">${categoryData.category}</h2>
                         <div class="sites-grid"></div>
                     `;
                     
-                    // Insert before footer
+                    // 在页脚前插入
                     const footer = document.querySelector('footer');
                     footer.parentNode.insertBefore(categoryDiv, footer);
                     
-                    // Add sites
+                    // 添加网站
                     categoryData.sites.forEach(site => {
                         const siteCard = document.createElement('div');
                         siteCard.className = 'site-card';
@@ -1161,9 +1016,9 @@
                         
                         siteCard.innerHTML = `
                             <a href="${site.url}" target="_blank">
-                                <h3 class="site-name">${site.name_en || site.name}</h3>
-                                <p>${site.description_en || site.description}</p>
-                                <p class="site-comment">Review: ${site.comment_en || site.comment}</p>
+                                <h3 class="site-name">${site.name}</h3>
+                                <p>${site.description}</p>
+                                <p class="site-comment">站长点评: ${site.comment}</p>
                             </a>
                         `;
                         
@@ -1171,9 +1026,9 @@
                     });
                 });
             } catch (error) {
-                console.error('Failed to load navigation data', error);
+                console.error('加载导航数据失败', error);
             }
         }
     </script>
 </body>
-</html> 
+</html>
