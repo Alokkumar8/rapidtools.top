@@ -599,47 +599,105 @@
                 const responseElement = document.getElementById(`response-${index}`);
                 
                 try {
-                    // Due to CORS restrictions, we can't directly test most external links
-                    // We'll just check if the URL is valid and reachable
-                    // This will only work reliably for same-origin resources
-                    const controller = new AbortController();
-                    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+                    // 使用时间戳参数避免缓存
+                    const timestamp = new Date().getTime();
+                    const urlWithTimestamp = link.url.includes('?') 
+                        ? `${link.url}&_t=${timestamp}` 
+                        : `${link.url}?_t=${timestamp}`;
                     
-                    const response = await fetch(link.url, {
-                        method: 'HEAD',
-                        mode: 'no-cors', // This will prevent CORS errors but also prevent us from seeing response details
-                        cache: 'no-cache',
-                        signal: controller.signal
+                    // 创建一个Image对象来测试链接
+                    const img = new Image();
+                    let isResolved = false;
+                    
+                    // 超时处理
+                    const timeoutPromise = new Promise((_, reject) => {
+                        setTimeout(() => {
+                            if (!isResolved) {
+                                reject(new Error('Request timed out after 10 seconds'));
+                            }
+                        }, 10000);
                     });
                     
-                    clearTimeout(timeoutId);
+                    // 使用Promise包装图片加载
+                    const imgPromise = new Promise((resolve, reject) => {
+                        img.onload = () => {
+                            isResolved = true;
+                            resolve('success');
+                        };
+                        img.onerror = () => {
+                            isResolved = true;
+                            reject(new Error('Failed to load resource'));
+                        };
+                        
+                        // 对于非图片URL，我们使用XMLHttpRequest
+                        if (!link.url.match(/\.(jpg|jpeg|png|gif|svg|webp|ico)$/i)) {
+                            const xhr = new XMLHttpRequest();
+                            xhr.open('HEAD', urlWithTimestamp, true);
+                            xhr.timeout = 10000; // 10 second timeout
+                            
+                            xhr.onload = () => {
+                                isResolved = true;
+                                resolve(`${xhr.status} ${xhr.statusText}`);
+                            };
+                            
+                            xhr.onerror = () => {
+                                isResolved = true;
+                                reject(new Error('Network error'));
+                            };
+                            
+                            xhr.ontimeout = () => {
+                                isResolved = true;
+                                reject(new Error('Request timed out'));
+                            };
+                            
+                            try {
+                                xhr.send();
+                            } catch (error) {
+                                reject(error);
+                            }
+                        } else {
+                            // 对于图片URL，设置src属性以触发加载
+                            img.src = urlWithTimestamp;
+                        }
+                    });
                     
-                    // If we get here with no-cors mode, we know the resource exists but can't get status details
-                    link.status = 'warning';
-                    link.responseCode = 'Unknown (CORS)';
-                    link.responseText = 'Link seems to exist, but details cannot be verified due to CORS restrictions';
-                    link.checked = true;
+                    // 竞争超时和图片加载
+                    const result = await Promise.race([imgPromise, timeoutPromise]);
                     
-                    statusElement.className = 'link-status status-warning';
-                    responseElement.textContent = link.responseText;
+                    if (result === 'success') {
+                        link.status = 'success';
+                        link.responseCode = '200 OK';
+                        link.responseText = 'Resource loaded successfully';
+                    } else if (result.startsWith('2') || result.startsWith('3')) {
+                        // 2xx和3xx状态码表示成功
+                        link.status = 'success';
+                        link.responseCode = result;
+                        link.responseText = 'Resource loaded successfully';
+                    } else {
+                        // 4xx和5xx状态码表示错误
+                        link.status = 'error';
+                        link.responseCode = result;
+                        link.responseText = 'Server returned error status';
+                    }
                     
                 } catch (error) {
-                    // If error is an abort error, it's a timeout
-                    if (error.name === 'AbortError') {
+                    // 处理错误
+                    if (error.message.includes('timeout')) {
                         link.status = 'warning';
                         link.responseCode = 'Timeout';
                         link.responseText = 'Request timed out after 10 seconds';
                     } else {
-                        // For other errors, we'll mark as unknown since it might be CORS-related
-                        link.status = 'warning';
-                        link.responseCode = 'Unknown';
+                        // 其他错误情况，标记为错误
+                        link.status = 'error';
+                        link.responseCode = 'Error';
                         link.responseText = `Unable to check: ${error.message}`;
                     }
-                    
-                    link.checked = true;
-                    statusElement.className = 'link-status status-warning';
-                    responseElement.textContent = link.responseText;
                 }
+                
+                // 更新界面
+                link.checked = true;
+                statusElement.className = `link-status status-${link.status}`;
+                responseElement.textContent = `${link.responseCode}: ${link.responseText}`;
                 
                 return link;
             }

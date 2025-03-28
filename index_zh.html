@@ -46,6 +46,92 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            padding-left: 220px; /* 为侧边栏留出空间 */
+        }
+
+        /* 侧边导航样式 */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 200px;
+            background-color: var(--card-bg);
+            box-shadow: var(--card-shadow);
+            z-index: 1000;
+            padding: 20px 0;
+            overflow-y: auto;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-header {
+            text-align: center;
+            padding: 0 20px 20px;
+            border-bottom: 1px solid rgba(33, 150, 243, 0.2);
+        }
+
+        .sidebar-title {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .category-nav {
+            padding: 20px;
+        }
+
+        .nav-item {
+            margin-bottom: 10px;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            display: block;
+            padding: 8px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* 响应式布局 */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .container {
+                padding-left: 20px;
+            }
+            
+            .toggle-sidebar {
+                display: block;
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                z-index: 1001;
+                background: var(--primary-color);
+                color: white;
+                border: none;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+                cursor: pointer;
+            }
         }
 
         header {
@@ -256,6 +342,30 @@
     </style>
 </head>
 <body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-title">分类导航</div>
+        </div>
+        <ul class="category-nav">
+            <li class="nav-item"><a href="#ai-tools" class="nav-link">AI 工具</a></li>
+            <li class="nav-item"><a href="#video-tools" class="nav-link">视频工具</a></li>
+            <li class="nav-item"><a href="#image-tools" class="nav-link">图片工具</a></li>
+            <li class="nav-item"><a href="#pdf-tools" class="nav-link">PDF 工具</a></li>
+            <li class="nav-item"><a href="#audio-tools" class="nav-link">音频工具</a></li>
+            <li class="nav-item"><a href="#dev-tools" class="nav-link">开发工具</a></li>
+            <li class="nav-item"><a href="#design-tools" class="nav-link">设计创作工具</a></li>
+            <li class="nav-item"><a href="#utility-tools" class="nav-link">实用工具</a></li>
+            <li class="nav-item"><a href="#doc-tools" class="nav-link">文档与编辑工具</a></li>
+        </ul>
+    </div>
+    <button class="toggle-sidebar" id="toggleSidebar" style="display: none;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+    </button>
+
     <div class="container">
         <header>
             <!-- Tech-inspired decorative elements -->
@@ -277,7 +387,7 @@
             <button class="language-toggle" onclick="switchLanguage()">English</button>
         </header>
 
-        <div class="category">
+        <div class="category" id="ai-tools">
             <h2 class="category-title">AI 工具</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="ai assistant chat conversation">
@@ -442,8 +552,8 @@
             </div>
         </div>
 
-        <div class="category">
-            <h2 class="category-title">YouTube 工具</h2>
+        <div class="category" id="video-tools">
+            <h2 class="category-title">视频工具</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="youtube download video mp4">
                     <a href="https://yt.savetube.me/1kejjj1?id=362858504" target="_blank">
@@ -468,12 +578,7 @@
                         <p class="site-comment">站长点评: 不仅支持 YouTube，还支持多种视频平台，功能全面</p>
                     </a>
                 </div>
-            </div>
-        </div>
 
-        <div class="category">
-            <h2 class="category-title">视频工具</h2>
-            <div class="sites-grid">
                 <div class="site-card" data-keywords="video download mp4">
                     <a href="https://www.videograbber.net/" target="_blank">
                         <h3 class="site-name">VideoGrabber</h3>
@@ -564,7 +669,7 @@
             </div>
         </div>
 
-        <div class="category">
+        <div class="category" id="image-tools">
             <h2 class="category-title">图片工具</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="image compress reduce size">
@@ -657,7 +762,7 @@
             </div>
         </div>
 
-        <div class="category">
+        <div class="category" id="pdf-tools">
             <h2 class="category-title">PDF 工具</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="pdf merge combine">
@@ -702,7 +807,7 @@
             </div>
         </div>
 
-        <div class="category">
+        <div class="category" id="audio-tools">
             <h2 class="category-title">音频工具</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="audio convert format">
@@ -763,7 +868,7 @@
             </div>
         </div>
 
-        <div class="category">
+        <div class="category" id="dev-tools">
             <h2 class="category-title">开发工具</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="code editor online">
@@ -800,7 +905,7 @@
             </div>
         </div>
 
-        <div class="category">
+        <div class="category" id="design-tools">
             <h2 class="category-title">设计创作工具</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="design gaoding creative">
@@ -845,7 +950,7 @@
             </div>
         </div>
 
-        <div class="category">
+        <div class="category" id="utility-tools">
             <h2 class="category-title">实用工具</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="utility countdown timer">
@@ -898,7 +1003,7 @@
             </div>
         </div>
 
-        <div class="category">
+        <div class="category" id="doc-tools">
             <h2 class="category-title">文档与编辑工具</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="document note mind mapping">
@@ -979,7 +1084,75 @@
 
             // 从本地存储加载网站数据
             loadSitesFromStorage();
+            
+            // 初始化侧边栏功能
+            initSidebar();
         });
+
+        // 初始化侧边栏功能
+        function initSidebar() {
+            // 处理导航链接点击
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 移除所有活动链接类
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    
+                    // 添加活动类到当前点击的链接
+                    this.classList.add('active');
+                    
+                    // 获取目标元素和其位置
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    const offsetTop = targetElement.offsetTop;
+                    
+                    // 平滑滚动到目标位置
+                    window.scrollTo({
+                        top: offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 在移动设备上，点击后关闭侧边栏
+                    if (window.innerWidth <= 768) {
+                        document.querySelector('.sidebar').classList.remove('active');
+                    }
+                });
+            });
+            
+            // 处理移动设备上的侧边栏切换
+            const toggleButton = document.getElementById('toggleSidebar');
+            if (window.innerWidth <= 768) {
+                toggleButton.style.display = 'flex';
+                toggleButton.addEventListener('click', function() {
+                    document.querySelector('.sidebar').classList.toggle('active');
+                });
+            }
+            
+            // 监听滚动以更新活动导航链接
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.scrollY;
+                
+                // 找到当前可见的类别
+                document.querySelectorAll('.category').forEach(category => {
+                    const categoryTop = category.offsetTop;
+                    const categoryBottom = categoryTop + category.offsetHeight;
+                    
+                    if (scrollPosition >= categoryTop - 100 && scrollPosition < categoryBottom) {
+                        const categoryId = category.getAttribute('id');
+                        
+                        // 更新导航链接活动状态
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${categoryId}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            });
+        }
 
         // 从本地存储加载网站数据
         function loadSitesFromStorage() {

@@ -46,6 +46,92 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            padding-left: 220px; /* Space for sidebar */
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 200px;
+            background-color: var(--card-bg);
+            box-shadow: var(--card-shadow);
+            z-index: 1000;
+            padding: 20px 0;
+            overflow-y: auto;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-header {
+            text-align: center;
+            padding: 0 20px 20px;
+            border-bottom: 1px solid rgba(33, 150, 243, 0.2);
+        }
+
+        .sidebar-title {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .category-nav {
+            padding: 20px;
+        }
+
+        .nav-item {
+            margin-bottom: 10px;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            display: block;
+            padding: 8px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Responsive layout */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .container {
+                padding-left: 20px;
+            }
+            
+            .toggle-sidebar {
+                display: block;
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                z-index: 1001;
+                background: var(--primary-color);
+                color: white;
+                border: none;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+                cursor: pointer;
+            }
         }
 
         header {
@@ -350,34 +436,6 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .sites-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-            
-            header {
-                padding: 20px 0;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .theme-toggle {
-                top: 10px;
-                right: 10px;
-            }
-            
-            .admin-form {
-                grid-template-columns: 1fr;
-            }
-            
-            .admin-form button {
-                grid-column: span 1;
-            }
-        }
-
         /* Tech-inspired elements */
         .tech-circles {
             position: absolute;
@@ -401,6 +459,30 @@
     </style>
 </head>
 <body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-title">Categories</div>
+        </div>
+        <ul class="category-nav">
+            <li class="nav-item"><a href="#ai-tools" class="nav-link">AI Tools</a></li>
+            <li class="nav-item"><a href="#video-tools" class="nav-link">Video Tools</a></li>
+            <li class="nav-item"><a href="#image-tools" class="nav-link">Image Tools</a></li>
+            <li class="nav-item"><a href="#pdf-tools" class="nav-link">PDF Tools</a></li>
+            <li class="nav-item"><a href="#audio-tools" class="nav-link">Audio Tools</a></li>
+            <li class="nav-item"><a href="#dev-tools" class="nav-link">Development Tools</a></li>
+            <li class="nav-item"><a href="#design-tools" class="nav-link">Design & Creative Tools</a></li>
+            <li class="nav-item"><a href="#utility-tools" class="nav-link">Utility Tools</a></li>
+            <li class="nav-item"><a href="#doc-tools" class="nav-link">Document & Editing Tools</a></li>
+        </ul>
+    </div>
+    <button class="toggle-sidebar" id="toggleSidebar" style="display: none;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+    </button>
+
     <div class="container">
         <header>
             <!-- Tech-inspired decorative elements -->
@@ -422,7 +504,7 @@
             <button class="language-toggle" onclick="switchLanguage()">中文</button>
         </header>
 
-        <div class="category">
+        <div class="category" id="ai-tools">
             <h2 class="category-title">AI Tools</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="ai assistant chat conversation">
@@ -587,22 +669,22 @@
             </div>
         </div>
 
-        <div class="category">
-            <h2 class="category-title">YouTube Tools</h2>
+        <div class="category" id="video-tools">
+            <h2 class="category-title">Video Tools</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="youtube download video mp4">
                     <a href="https://yt.savetube.me/1kejjj1?id=362858504" target="_blank">
                         <h3 class="site-name">SaveTube</h3>
-                        <p>Easily download YouTube videos online</p>
-                        <p class="site-comment">Review: Simple and fast to use, supports multiple resolutions, no software installation required</p>
+                        <p>Easy YouTube video download tool</p>
+                        <p class="site-comment">Editor's Note: Simple and fast, supports various resolutions, no software installation required</p>
                     </a>
                 </div>
 
                 <div class="site-card" data-keywords="youtube subtitle download srt">
                     <a href="https://www.downloadyoutubesubtitles.com/" target="_blank">
                         <h3 class="site-name">Download YouTube Subtitles</h3>
-                        <p>Download subtitles from YouTube videos</p>
-                        <p class="site-comment">Review: Clean interface, supports multiple subtitle formats, perfect for language learners</p>
+                        <p>Get captions from YouTube videos</p>
+                        <p class="site-comment">Editor's Note: Clean interface, supports multiple subtitle formats, perfect for language learners</p>
                     </a>
                 </div>
 
@@ -610,15 +692,10 @@
                     <a href="https://downsub.com/" target="_blank">
                         <h3 class="site-name">DownSub</h3>
                         <p>Download subtitles from YouTube and other platforms</p>
-                        <p class="site-comment">Review: Not just for YouTube, supports multiple video platforms with comprehensive functions</p>
+                        <p class="site-comment">Editor's Note: Not just for YouTube, supports many video platforms, comprehensive features</p>
                     </a>
                 </div>
-            </div>
-        </div>
 
-        <div class="category">
-            <h2 class="category-title">Video Tools</h2>
-            <div class="sites-grid">
                 <div class="site-card" data-keywords="video download mp4">
                     <a href="https://www.videograbber.net/" target="_blank">
                         <h3 class="site-name">VideoGrabber</h3>
@@ -709,7 +786,7 @@
             </div>
         </div>
 
-        <div class="category">
+        <div class="category" id="image-tools">
             <h2 class="category-title">Image Tools</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="image compress reduce size">
@@ -802,7 +879,7 @@
             </div>
         </div>
 
-        <div class="category">
+        <div class="category" id="pdf-tools">
             <h2 class="category-title">PDF Tools</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="pdf merge combine">
@@ -847,7 +924,7 @@
             </div>
         </div>
 
-        <div class="category">
+        <div class="category" id="audio-tools">
             <h2 class="category-title">Audio Tools</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="audio convert format">
@@ -908,7 +985,7 @@
             </div>
         </div>
 
-        <div class="category">
+        <div class="category" id="dev-tools">
             <h2 class="category-title">Development Tools</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="code editor online">
@@ -945,7 +1022,7 @@
             </div>
         </div>
 
-        <div class="category">
+        <div class="category" id="design-tools">
             <h2 class="category-title">Design & Creative Tools</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="design gaoding creative">
@@ -990,7 +1067,7 @@
             </div>
         </div>
 
-        <div class="category">
+        <div class="category" id="utility-tools">
             <h2 class="category-title">Utility Tools</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="utility countdown timer">
@@ -1043,7 +1120,7 @@
             </div>
         </div>
 
-        <div class="category">
+        <div class="category" id="doc-tools">
             <h2 class="category-title">Document & Editing Tools</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="document note mind mapping">
@@ -1104,12 +1181,12 @@
     </div>
 
     <script>
-        // Language switching function
+        // Language switching
         function switchLanguage() {
             window.location.href = 'index_zh.html';
         }
         
-        // Theme toggle function
+        // Theme toggle
         function toggleTheme() {
             document.body.dataset.theme = document.body.dataset.theme === 'dark' ? '' : 'dark';
             localStorage.setItem('theme', document.body.dataset.theme || 'light');
@@ -1122,9 +1199,77 @@
                 document.body.dataset.theme = 'dark';
             }
 
-            // Load websites from storage
+            // Load sites from storage
             loadSitesFromStorage();
+            
+            // Initialize sidebar
+            initSidebar();
         });
+
+        // Initialize sidebar functionality
+        function initSidebar() {
+            // Handle navigation link clicks
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Get target element and its position
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    const offsetTop = targetElement.offsetTop;
+                    
+                    // Smooth scroll to target
+                    window.scrollTo({
+                        top: offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                    
+                    // On mobile, close sidebar after click
+                    if (window.innerWidth <= 768) {
+                        document.querySelector('.sidebar').classList.remove('active');
+                    }
+                });
+            });
+            
+            // Handle sidebar toggle on mobile
+            const toggleButton = document.getElementById('toggleSidebar');
+            if (window.innerWidth <= 768) {
+                toggleButton.style.display = 'flex';
+                toggleButton.addEventListener('click', function() {
+                    document.querySelector('.sidebar').classList.toggle('active');
+                });
+            }
+            
+            // Update active nav link on scroll
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.scrollY;
+                
+                // Find currently visible category
+                document.querySelectorAll('.category').forEach(category => {
+                    const categoryTop = category.offsetTop;
+                    const categoryBottom = categoryTop + category.offsetHeight;
+                    
+                    if (scrollPosition >= categoryTop - 100 && scrollPosition < categoryBottom) {
+                        const categoryId = category.getAttribute('id');
+                        
+                        // Update active nav link
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${categoryId}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            });
+        }
 
         // Load sites from storage
         function loadSitesFromStorage() {
@@ -1145,7 +1290,7 @@
                     const categoryDiv = document.createElement('div');
                     categoryDiv.className = 'category';
                     categoryDiv.innerHTML = `
-                        <h2 class="category-title">${categoryData.category_en || categoryData.category}</h2>
+                        <h2 class="category-title">${categoryData.category}</h2>
                         <div class="sites-grid"></div>
                     `;
                     
@@ -1161,9 +1306,9 @@
                         
                         siteCard.innerHTML = `
                             <a href="${site.url}" target="_blank">
-                                <h3 class="site-name">${site.name_en || site.name}</h3>
-                                <p>${site.description_en || site.description}</p>
-                                <p class="site-comment">Review: ${site.comment_en || site.comment}</p>
+                                <h3 class="site-name">${site.name}</h3>
+                                <p>${site.description}</p>
+                                <p class="site-comment">Editor's Note: ${site.comment}</p>
                             </a>
                         `;
                         
