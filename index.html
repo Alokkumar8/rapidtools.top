@@ -456,6 +456,84 @@
             z-index: -1;
             opacity: 0.1;
         }
+
+        /* Input fields */
+        .search-container {
+            margin: 20px auto 30px;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            padding-left: 45px;
+            font-size: 16px;
+            border: 2px solid var(--primary-color);
+            border-radius: 30px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.4);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+            font-size: 20px;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            font-size: 18px;
+            color: var(--text-color);
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            margin: 20px 0;
+            display: none;
+            box-shadow: var(--card-shadow);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .sites-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            header {
+                padding: 20px 0;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .theme-toggle {
+                top: 10px;
+                right: 10px;
+            }
+            
+            .admin-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .admin-form button {
+                grid-column: span 1;
+            }
+
+            .search-container {
+                max-width: 90%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -500,9 +578,20 @@
             
             <img src="assets/images/logo.jpg" class="logo" alt="RAPID TOOLS">
             <p>Carefully selected efficient tools navigation</p>
-            <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
-            <button class="language-toggle" onclick="switchLanguage()">中文</button>
+            <div class="header-actions">
+                <button class="theme-toggle" onclick="toggleTheme()">🌓 Toggle Theme</button>
+                <button class="language-toggle" onclick="switchLanguage()">中文</button>
+            </div>
         </header>
+
+        <div class="search-container">
+            <i class="search-icon">🔍</i>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search for tools by name, category, or function..." oninput="filterSites()">
+        </div>
+        
+        <div class="no-results" id="noResults">
+            No matching tools found. Try a different search term.
+        </div>
 
         <div class="category" id="ai-tools">
             <h2 class="category-title">AI Tools</h2>
@@ -1190,6 +1279,54 @@
         function toggleTheme() {
             document.body.dataset.theme = document.body.dataset.theme === 'dark' ? '' : 'dark';
             localStorage.setItem('theme', document.body.dataset.theme || 'light');
+        }
+
+        // Site filtering
+        function filterSites() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const siteCards = document.querySelectorAll('.site-card');
+            const categories = document.querySelectorAll('.category');
+            const noResults = document.getElementById('noResults');
+            
+            let matchFound = false;
+            
+            // Reset display of all categories
+            categories.forEach(category => {
+                category.style.display = 'block';
+            });
+            
+            siteCards.forEach(card => {
+                const keywords = (card.dataset.keywords || '').toLowerCase();
+                const name = card.querySelector('.site-name').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                const comment = card.querySelector('.site-comment').textContent.toLowerCase();
+                
+                // Check if the card matches the search term
+                if (searchTerm === '' || 
+                    keywords.includes(searchTerm) || 
+                    name.includes(searchTerm) || 
+                    description.includes(searchTerm) ||
+                    comment.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    matchFound = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Hide empty categories
+            categories.forEach(category => {
+                const visibleCards = Array.from(category.querySelectorAll('.site-card')).filter(card => 
+                    card.style.display !== 'none'
+                );
+                
+                if (visibleCards.length === 0) {
+                    category.style.display = 'none';
+                }
+            });
+            
+            // Show/hide no results message
+            noResults.style.display = matchFound ? 'none' : 'block';
         }
 
         // Load saved theme
