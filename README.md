@@ -44,6 +44,18 @@ To add new tools or categories:
 2. Follow the existing HTML structure for adding new sections or tools
 3. Make sure to add corresponding sidebar menu items if creating new categories
 
+## Recent Updates
+
+- Modern UI redesign with updated color scheme and card styling
+- Reorganized categories with emojis for better visual hierarchy
+- Consolidated GHIBLI tools into AI category
+- Improved responsive design and hover effects
+- Fixed sidebar navigation order to match content sections
+- Moved ChatGPT to first position in AI Tools category
+- Added Doubao (ByteDance AI assistant) as second item in AI Tools
+- Cleaned up duplicate Development Tools sections
+- Consolidated document editing tools into proper categories
+
 ## License
 
-This project is licensed under the terms specified in the LICENSE file. 
+This project is licensed under the terms specified in the LICENSE file.

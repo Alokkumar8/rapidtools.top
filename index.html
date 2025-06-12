@@ -17,26 +17,29 @@
     <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
     <style>
         :root {
-            --primary-color: #2196F3;
-            --secondary-color: #0D47A1;
-            --background-color: #f5f7fa;
+            --primary-color: #6366f1;
+            --secondary-color: #4f46e5;
+            --accent-color: #8b5cf6;
+            --background-color: #f8fafc;
             --card-bg: #ffffff;
-            --text-color: #333333;
-            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --comment-color: #777;
-            --accent-color: #1E88E5;
-            --dark-bg: #1A2035;
-            --dark-card: #242B42;
+            --text-color: #1e293b;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --comment-color: #64748b;
+            --border-color: #e2e8f0;
+            --hover-bg: #f1f5f9;
         }
 
         [data-theme="dark"] {
-            --primary-color: #2196F3;
-            --secondary-color: #64B5F6;
-            --background-color: #1A2035;
-            --card-bg: #242B42;
-            --text-color: #f5f5f5;
-            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            --comment-color: #bbb;
+            --primary-color: #818cf8;
+            --secondary-color: #a78bfa;
+            --accent-color: #c084fc;
+            --background-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f1f5f9;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+            --comment-color: #94a3b8;
+            --border-color: #334155;
+            --hover-bg: #334155;
         }
 
         * {
@@ -205,36 +208,40 @@
         }
 
         .category {
-            margin-bottom: 50px;
-            border-radius: 10px;
-            padding: 20px;
+            margin-bottom: 3rem;
+            border-radius: 1rem;
+            padding: 2rem;
             background-color: var(--card-bg);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .category:hover {
-            box-shadow: 0 8px 20px rgba(33, 150, 243, 0.15);
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
         }
 
         .category-title {
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
             border-bottom: 2px solid var(--primary-color);
             color: var(--primary-color);
             display: flex;
             align-items: center;
+            position: relative;
         }
 
         .category-title::before {
             content: '';
             display: inline-block;
-            width: 8px;
-            height: 25px;
-            background-color: var(--primary-color);
-            margin-right: 15px;
-            border-radius: 4px;
+            width: 6px;
+            height: 28px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            margin-right: 1rem;
+            border-radius: 3px;
         }
 
         .sites-grid {
@@ -245,12 +252,13 @@
 
         .site-card {
             background-color: var(--card-bg);
-            border-radius: 12px;
+            border-radius: 0.75rem;
             overflow: hidden;
             box-shadow: var(--card-shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border-color);
             position: relative;
+            backdrop-filter: blur(10px);
         }
 
         .site-card::before {
@@ -258,15 +266,16 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 5px;
+            width: 4px;
             height: 100%;
-            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
-            border-radius: 12px 0 0 12px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 0.75rem 0 0 0.75rem;
         }
 
         .site-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(33, 150, 243, 0.2);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: var(--primary-color);
         }
 
         .site-card a {
@@ -277,10 +286,11 @@
         }
 
         .site-name {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
             color: var(--primary-color);
-            font-weight: 600;
+            font-weight: 700;
+            line-height: 1.4;
         }
 
         .site-comment {
@@ -552,15 +562,15 @@
             <div class="sidebar-title">Categories</div>
         </div>
         <ul class="category-nav">
-            <li class="nav-item"><a href="#ai-tools" class="nav-link">AI Tools</a></li>
-            <li class="nav-item"><a href="#video-tools" class="nav-link">Video Tools</a></li>
-            <li class="nav-item"><a href="#image-tools" class="nav-link">Image Tools</a></li>
-            <li class="nav-item"><a href="#pdf-tools" class="nav-link">PDF Tools</a></li>
-            <li class="nav-item"><a href="#audio-tools" class="nav-link">Audio Tools</a></li>
-            <li class="nav-item"><a href="#dev-tools" class="nav-link">Development Tools</a></li>
-            <li class="nav-item"><a href="#design-tools" class="nav-link">Design & Creative Tools</a></li>
-            <li class="nav-item"><a href="#utility-tools" class="nav-link">Utility Tools</a></li>
-            <li class="nav-item"><a href="#doc-tools" class="nav-link">Document & Editing Tools</a></li>
+            <li class="nav-item"><a href="#ai-tools" class="nav-link">🤖 AI Tools</a></li>
+                <li class="nav-item"><a href="#dev-tools" class="nav-link">💻 Development Tools</a></li>
+                <li class="nav-item"><a href="#design-tools" class="nav-link">🎨 Design & Creative Tools</a></li>
+                <li class="nav-item"><a href="#image-tools" class="nav-link">🖼️ Image Tools</a></li>
+                <li class="nav-item"><a href="#video-tools" class="nav-link">🎬 Video Tools</a></li>
+                <li class="nav-item"><a href="#pdf-tools" class="nav-link">📄 PDF Tools</a></li>
+                <li class="nav-item"><a href="#audio-tools" class="nav-link">🎵 Audio Tools</a></li>
+                <li class="nav-item"><a href="#utility-tools" class="nav-link">🔧 Utility Tools</a></li>
+                <li class="nav-item"><a href="#document-tools" class="nav-link">📝 Document & Editing Tools</a></li>
         </ul>
     </div>
     <button class="toggle-sidebar" id="toggleSidebar" style="display: none;">
@@ -603,51 +613,32 @@
             No matching tools found. Try a different search term.
         </div>
 
-        <div class="category" id="trends-ghibli">
-            <h2 class="category-title">Trends: Ghibli Generator</h2>
-            <div class="sites-grid">
-                <div class="site-card" data-keywords="ghibli ai filter generator">
-                    <a href="https://www.aiease.ai/app/apply-ai-filters" target="_blank">
-                        <h3 class="site-name">AIEase Ghibli Filter</h3>
-                        <p>Transform your photos into Ghibli-style artwork</p>
-                        <p class="site-comment">Editor's Note: Simple and easy-to-use Ghibli style conversion tool</p>
-                    </a>
-                </div>
 
-                <div class="site-card" data-keywords="ghibli ai filter video">
-                    <a href="https://www.vidnoz.com/ai-ghibli-filter.html" target="_blank">
-                        <h3 class="site-name">Vidnoz Ghibli Filter</h3>
-                        <p>Convert photos and videos to Ghibli style</p>
-                        <p class="site-comment">Editor's Note: Supports both image and video Ghibli style conversion</p>
-                    </a>
-                </div>
-
-                <div class="site-card" data-keywords="ghibli ai filter remaker">
-                    <a href="https://remaker.ai/ai-filter/studio-ghibli-filter/" target="_blank">
-                        <h3 class="site-name">Remaker Ghibli Filter</h3>
-                        <p>Professional Ghibli-style image transformation</p>
-                        <p class="site-comment">Editor's Note: Professional Ghibli style conversion tool with excellent results</p>
-                    </a>
-                </div>
-            </div>
-        </div>
 
         <div class="category" id="ai-tools">
-            <h2 class="category-title">AI Tools</h2>
+            <h2 class="category-title">🤖 AI Tools</h2>
             <div class="sites-grid">
-                <div class="site-card" data-keywords="ai assistant chat conversation">
-                    <a href="https://copilot.microsoft.com/" target="_blank">
-                        <h3 class="site-name">Microsoft Copilot</h3>
-                        <p>Advanced AI assistant powered by modern models</p>
-                        <p class="site-comment">Editor's Note: Integrates with Microsoft services, offers both free and premium features</p>
-                    </a>
-                </div>
-
                 <div class="site-card" data-keywords="ai chat gpt openai">
                     <a href="https://chatgpt.com/" target="_blank">
                         <h3 class="site-name">ChatGPT</h3>
                         <p>OpenAI's conversational AI assistant</p>
                         <p class="site-comment">Review: Versatile AI capable of answering questions and assisting with various tasks</p>
+                    </a>
+                </div>
+
+                <div class="site-card" data-keywords="ai assistant chat doubao bytedance">
+                    <a href="https://www.doubao.com/" target="_blank">
+                        <h3 class="site-name">Doubao</h3>
+                        <p>ByteDance's AI intelligent assistant</p>
+                        <p class="site-comment">Review: Advanced AI assistant with strong Chinese language capabilities and multimodal features</p>
+                    </a>
+                </div>
+
+                <div class="site-card" data-keywords="ai assistant chat conversation">
+                    <a href="https://copilot.microsoft.com/" target="_blank">
+                        <h3 class="site-name">Microsoft Copilot</h3>
+                        <p>Advanced AI assistant powered by modern models</p>
+                        <p class="site-comment">Editor's Note: Integrates with Microsoft services, offers both free and premium features</p>
                     </a>
                 </div>
 
@@ -794,11 +785,210 @@
                         <p class="site-comment">Editor's Note: AI-powered watermark removal with excellent results</p>
                     </a>
                 </div>
+
+                <div class="site-card" data-keywords="ghibli ai filter generator">
+                    <a href="https://www.aiease.ai/app/apply-ai-filters" target="_blank">
+                        <h3 class="site-name">AIEase Ghibli Filter</h3>
+                        <p>Transform your photos into Ghibli-style artwork</p>
+                        <p class="site-comment">Editor's Note: Simple and easy-to-use Ghibli style conversion tool</p>
+                    </a>
+                </div>
+
+                <div class="site-card" data-keywords="ghibli ai filter video">
+                    <a href="https://www.vidnoz.com/ai-ghibli-filter.html" target="_blank">
+                        <h3 class="site-name">Vidnoz Ghibli Filter</h3>
+                        <p>Convert photos and videos to Ghibli style</p>
+                        <p class="site-comment">Editor's Note: Supports both image and video Ghibli style conversion</p>
+                    </a>
+                </div>
+
+                <div class="site-card" data-keywords="ghibli ai filter remaker">
+                    <a href="https://remaker.ai/ai-filter/studio-ghibli-filter/" target="_blank">
+                        <h3 class="site-name">Remaker Ghibli Filter</h3>
+                        <p>Professional Ghibli-style image transformation</p>
+                        <p class="site-comment">Editor's Note: Professional Ghibli style conversion tool with excellent results</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="category" id="dev-tools">
+            <h2 class="category-title">💻 Development Tools</h2>
+            <div class="sites-grid">
+                <div class="site-card" data-keywords="code editor online">
+                    <a href="https://replit.com/" target="_blank">
+                        <h3 class="site-name">Replit</h3>
+                        <p>Online code editor and IDE</p>
+                        <p class="site-comment">Review: Supports multiple languages, collaborative coding</p>
+                    </a>
+                </div>
+
+                <div class="site-card" data-keywords="code format beautify">
+                    <a href="https://beautifier.io/" target="_blank">
+                        <h3 class="site-name">Beautifier</h3>
+                        <p>Code formatter and beautifier</p>
+                        <p class="site-comment">Review: Supports multiple languages, customizable formatting</p>
+                    </a>
+                </div>
+
+                <div class="site-card" data-keywords="api test postman">
+                    <a href="https://www.postman.com/" target="_blank">
+                        <h3 class="site-name">Postman</h3>
+                        <p>API testing and development</p>
+                        <p class="site-comment">Review: Comprehensive API testing tools, team collaboration</p>
+                    </a>
+                </div>
+
+                <div class="site-card" data-keywords="git repository">
+                    <a href="https://github.com/" target="_blank">
+                        <h3 class="site-name">GitHub</h3>
+                        <p>Code hosting and collaboration</p>
+                        <p class="site-comment">Review: Industry standard, extensive features</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="category" id="design-tools">
+            <h2 class="category-title">🎨 Design & Creative Tools</h2>
+            <div class="sites-grid">
+                <div class="site-card" data-keywords="design gaoding creative">
+                    <a href="https://www.gaoding.com/" target="_blank">
+                        <h3 class="site-name">Gaoding Design</h3>
+                        <p>Online design platform</p>
+                        <p class="site-comment">Editor's Note: One-stop solution for poster design, image design, and video editing</p>
+                    </a>
+                </div>
+
+                <div class="site-card" data-keywords="design emoji expression">
+                    <a href="https://benisland.neocities.org/petpet/" target="_blank">
+                        <h3 class="site-name">PetPet</h3>
+                        <p>Dynamic expression generator</p>
+                        <p class="site-comment">Editor's Note: Create fun head-patting animations, supports custom uploads</p>
+                    </a>
+                </div>
+
+                <div class="site-card" data-keywords="design emoji finder ai">
+                    <a href="https://emojis.click/en" target="_blank">
+                        <h3 class="site-name">EmojiClick</h3>
+                        <p>AI-assisted emoji finder</p>
+                        <p class="site-comment">Editor's Note: Find the perfect emoji with AI</p>
+                    </a>
+                </div>
+
+                <div class="site-card" data-keywords="design ogimage generate">
+                    <a href="https://ogimage.click/" target="_blank">
+                        <h3 class="site-name">OG Image Generator</h3>
+                        <p>Free social sharing image generation</p>
+                        <p class="site-comment">Editor's Note: Quickly create professional website preview images</p>
+                    </a>
+                </div>
+
+                <div class="site-card" data-keywords="design flowchart diagram">
+                    <a href="https://play.d2lang.com/" target="_blank">
+                        <h3 class="site-name">D2 Flowchart</h3>
+                        <p>Quick flowchart editing tool</p>
+                        <p class="site-comment">Editor's Note: Clean and efficient chart drawing tool</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="category" id="image-tools">
+            <h2 class="category-title">🖼️ Image Tools</h2>
+            <div class="sites-grid">
+                <div class="site-card" data-keywords="image compress reduce size">
+                    <a href="https://www.tinypng.com/" target="_blank">
+                        <h3 class="site-name">TinyPNG</h3>
+                        <p>Compress PNG and JPEG images</p>
+                        <p class="site-comment">Review: Excellent compression ratio, maintains image quality</p>
+                    </a>
+                </div>
+
+                <div class="site-card" data-keywords="image edit crop resize">
+                    <a href="https://www.iloveimg.com/" target="_blank">
+                        <h3 class="site-name">iLoveIMG</h3>
+                        <p>Edit, crop, and resize images</p>
+                        <p class="site-comment">Review: Comprehensive image editing tools, batch processing available</p>
+                    </a>
+                </div>
+
+                <div class="site-card" data-keywords="image background remove">
+                    <a href="https://www.remove.bg/" target="_blank">
+                        <h3 class="site-name">Remove.bg</h3>
+                        <p>Remove image backgrounds automatically</p>
+                        <p class="site-comment">Review: AI-powered background removal, very accurate results</p>
+                    </a>
+                </div>
+
+                <div class="site-card" data-keywords="image create design">
+                    <a href="https://www.canva.com/" target="_blank">
+                        <h3 class="site-name">Canva</h3>
+                        <p>Create beautiful designs and graphics</p>
+                        <p class="site-comment">Review: Professional design templates, easy to use interface</p>
+                    </a>
+                </div>
+
+                <div class="site-card" data-keywords="image photo edit photoshop">
+                    <a href="https://www.photopea.com/" target="_blank">
+                        <h3 class="site-name">Photopea</h3>
+                        <p>Free online photo editor</p>
+                        <p class="site-comment">Editor's Note: Similar to Photoshop but online, with powerful features</p>
+                    </a>
+                </div>
+
+                <div class="site-card" data-keywords="image background remove transparent">
+                    <a href="https://bgsub.cn/webapp/" target="_blank">
+                        <h3 class="site-name">BgSub</h3>
+                        <p>Background replacement tool without uploading</p>
+                        <p class="site-comment">Editor's Note: Processes images locally, secure and efficient</p>
+                    </a>
+                </div>
+
+                <div class="site-card" data-keywords="image background remove ai">
+                    <a href="https://pixian.ai/" target="_blank">
+                        <h3 class="site-name">Pixian.AI</h3>
+                        <p>AI background removal for images</p>
+                        <p class="site-comment">Editor's Note: Free high-quality background removal tool, no registration required</p>
+                    </a>
+                </div>
+
+                <div class="site-card" data-keywords="image compress optimize">
+                    <a href="https://ai.danqingai.com/index/image/compressor.html" target="_blank">
+                        <h3 class="site-name">Danqing AI Image Compressor</h3>
+                        <p>Online image compression tool</p>
+                        <p class="site-comment">Editor's Note: Smart compression that maintains quality while reducing file size</p>
+                    </a>
+                </div>
+
+                <div class="site-card" data-keywords="image ocr text extract">
+                    <a href="https://ocr.wdku.net/" target="_blank">
+                        <h3 class="site-name">Online OCR</h3>
+                        <p>Image to text OCR tool</p>
+                        <p class="site-comment">Editor's Note: Free and fast text extraction service from images</p>
+                    </a>
+                </div>
+
+                <div class="site-card" data-keywords="image tilt shift photography">
+                    <a href="https://tiltshiftmaker.com/photo-editing.php" target="_blank">
+                        <h3 class="site-name">TiltShiftMaker</h3>
+                        <p>Create tilt-shift photography effects</p>
+                        <p class="site-comment">Editor's Note: Easily create miniature model effect photos</p>
+                    </a>
+                </div>
+
+                <div class="site-card" data-keywords="image favicon extract logo">
+                    <a href="https://www.faviconextractor.com/" target="_blank">
+                        <h3 class="site-name">Favicon Extractor</h3>
+                        <p>Download favicons from websites</p>
+                        <p class="site-comment">Editor's Note: Quickly get icons and logos from any website</p>
+                    </a>
+                </div>
             </div>
         </div>
 
         <div class="category" id="video-tools">
-            <h2 class="category-title">Video Tools</h2>
+            <h2 class="category-title">🎬 Video Tools</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="youtube download video mp4">
                     <a href="https://yt.savetube.me/1kejjj1?id=362858504" target="_blank">
@@ -1008,7 +1198,7 @@
         </div>
 
         <div class="category" id="pdf-tools">
-            <h2 class="category-title">PDF Tools</h2>
+            <h2 class="category-title">📄 PDF Tools</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="pdf merge combine">
                     <a href="https://www.ilovepdf.com/merge_pdf" target="_blank">
@@ -1053,7 +1243,7 @@
         </div>
 
         <div class="category" id="audio-tools">
-            <h2 class="category-title">Audio Tools</h2>
+            <h2 class="category-title">🎵 Audio Tools</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="audio convert format">
                     <a href="https://online-audio-converter.com/" target="_blank">
@@ -1113,90 +1303,8 @@
             </div>
         </div>
 
-        <div class="category" id="dev-tools">
-            <h2 class="category-title">Development Tools</h2>
-            <div class="sites-grid">
-                <div class="site-card" data-keywords="code editor online">
-                    <a href="https://replit.com/" target="_blank">
-                        <h3 class="site-name">Replit</h3>
-                        <p>Online code editor and IDE</p>
-                        <p class="site-comment">Review: Supports multiple languages, collaborative coding</p>
-                    </a>
-                </div>
-
-                <div class="site-card" data-keywords="code format beautify">
-                    <a href="https://beautifier.io/" target="_blank">
-                        <h3 class="site-name">Beautifier</h3>
-                        <p>Code formatter and beautifier</p>
-                        <p class="site-comment">Review: Supports multiple languages, customizable formatting</p>
-                    </a>
-                </div>
-
-                <div class="site-card" data-keywords="api test postman">
-                    <a href="https://www.postman.com/" target="_blank">
-                        <h3 class="site-name">Postman</h3>
-                        <p>API testing and development</p>
-                        <p class="site-comment">Review: Comprehensive API testing tools, team collaboration</p>
-                    </a>
-                </div>
-
-                <div class="site-card" data-keywords="git repository">
-                    <a href="https://github.com/" target="_blank">
-                        <h3 class="site-name">GitHub</h3>
-                        <p>Code hosting and collaboration</p>
-                        <p class="site-comment">Review: Industry standard, extensive features</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="category" id="design-tools">
-            <h2 class="category-title">Design & Creative Tools</h2>
-            <div class="sites-grid">
-                <div class="site-card" data-keywords="design gaoding creative">
-                    <a href="https://www.gaoding.com/" target="_blank">
-                        <h3 class="site-name">Gaoding Design</h3>
-                        <p>Online design platform</p>
-                        <p class="site-comment">Editor's Note: One-stop solution for poster design, image design, and video editing</p>
-                    </a>
-                </div>
-
-                <div class="site-card" data-keywords="design emoji expression">
-                    <a href="https://benisland.neocities.org/petpet/" target="_blank">
-                        <h3 class="site-name">PetPet</h3>
-                        <p>Dynamic expression generator</p>
-                        <p class="site-comment">Editor's Note: Create fun head-patting animations, supports custom uploads</p>
-                    </a>
-                </div>
-
-                <div class="site-card" data-keywords="design emoji finder ai">
-                    <a href="https://emojis.click/en" target="_blank">
-                        <h3 class="site-name">EmojiClick</h3>
-                        <p>AI-assisted emoji finder</p>
-                        <p class="site-comment">Editor's Note: Find the perfect emoji with AI</p>
-                    </a>
-                </div>
-
-                <div class="site-card" data-keywords="design ogimage generate">
-                    <a href="https://ogimage.click/" target="_blank">
-                        <h3 class="site-name">OG Image Generator</h3>
-                        <p>Free social sharing image generation</p>
-                        <p class="site-comment">Editor's Note: Quickly create professional website preview images</p>
-                    </a>
-                </div>
-
-                <div class="site-card" data-keywords="design flowchart diagram">
-                    <a href="https://play.d2lang.com/" target="_blank">
-                        <h3 class="site-name">D2 Flowchart</h3>
-                        <p>Quick flowchart editing tool</p>
-                        <p class="site-comment">Editor's Note: Clean and efficient chart drawing tool</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-
         <div class="category" id="utility-tools">
-            <h2 class="category-title">Utility Tools</h2>
+            <h2 class="category-title">🔧 Utility Tools</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="utility countdown timer">
                     <a href="https://e.ggtimer.com/" target="_blank">
@@ -1248,8 +1356,8 @@
             </div>
         </div>
 
-        <div class="category" id="doc-tools">
-            <h2 class="category-title">Document & Editing Tools</h2>
+        <div class="category" id="document-tools">
+            <h2 class="category-title">📝 Document & Editing Tools</h2>
             <div class="sites-grid">
                 <div class="site-card" data-keywords="document note mind mapping">
                     <a href="https://mind.shutu.cn/" target="_blank">
@@ -1527,4 +1635,4 @@
         });
     </script>
 </body>
-</html> 
+</html>
